@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "www.admin-shell.io.schema.json.3.0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "frame": {
+      "$ref": "#/definitions/frame"
+    },
+    "interactionElements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Referable"
+      }
+    }
+  },
+  "required": ["frame", "interactionElements"],
+  "definitions": {
+    "frame": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "semanticProtocol": {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Reference"
+        },
+        "type": {
+          "type": "string"
+        },
+        "conversationId": {
+          "type": "string"
+        },
+        "messageId": {
+          "type": "string"
+        },
+        "sender": {
+          "$ref": "#/definitions/conversationMember"
+        },
+        "receiver": {
+          "$ref": "#/definitions/conversationMember"
+        },
+        "replyBy": {
+          "type": "number"
+        },
+        "inReplyTo": {
+          "type": "string"
+        }
+      },
+      "required": ["semanticProtocol", "type", "messageId"]
+    },
+        "conversationMember": {
+      "type": "object",
+      "properties": {
+        "identification": {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Identifier"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Referable": {
+      "oneOf": [
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/AssetAdministrationShell"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Submodel"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/ConceptDescription"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Asset"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Property"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/SubmodelElementCollection"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/File"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/Blob"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/ReferenceElement"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/ConceptDictionary"},
+        {
+          "$ref": "www.admin-shell.io.vwsid.schema#/definitions/View"}
+      ]
+    }
+  }
+}
